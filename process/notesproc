@@ -1,0 +1,43 @@
+
+- Definir chaque composant 1 par 1 puis on interconnectera tout ça 
+
+- Demarche : Ces 3 étapes sont valables pour faire chaque composant du process 
+
+		* Voir le composant qu'on veut faire ces interfaces : bus de sortie, bus en entrée 
+		* Voir qu'est-ce qu'on doit faire pour donner la bonne valeur au signaux de sortie
+		*synchrone si doit garder une information dans le composant (mémoire synchrone) pas besoin on va être asynchrone 
+
+
+- On crée des VHDL module a chaque fois !
+	* on entre ses composants (interface) 
+	* 8 ou 16 bits selon l'implementation d'affect a voir 
+
+On part sur l'ALU : ( + / - / * ) 
+	- utilisation d'une librairie existante pour les OP ! 
+	- dessin pour les bus d'e/s 
+	- les flags a faire ! a lever nous même : la carrie dépasse (sur 17 bits et pas 16) 
+			Solution : Créer un signal intermédiaire sur 17 bits ppour voir s'il y est ou pas : concatener un 0 sur le A+B en gros ( voir feuille explication) 
+					C sera donc le 17e bit de ce signal intermediaire selon ce qu'on a eu ! 
+	- etape suivante : Voir comment on leverai les autres flags ! 
+
+
+
+TEST : 
+	créer un nouveau fichier test bench , et après viré la clock si on est en asynchrone et après on écrit en dessous du wait genre une addition tout ça , on vérifie ensuite 
+
+
+------ A voir :::::::::::::::::::::::::
+	
+	ALU : 
+		- besoin de cast les signaux avec to_integer avant la multiplication ? 
+		- On a fait qq test avec le fichier test bench ça va 
+
+	BR : 
+		- A l'air bon 
+		- dans le process est-ce que c'est bien elsif et pas un autre if justement ??? 
+		- Voir comment faire un testbench qui rend compte des choses!! 
+
+	MEMOIRE DONNEES : 
+		- elsif ou if simple pour le process !??? 
+		- Comment on modèlise la mémoire de données !
+	

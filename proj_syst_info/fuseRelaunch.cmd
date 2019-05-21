@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "secureip" -o "/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/decode_test_isim_beh.exe" -prj "/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/decode_test_beh.prj" "work.decode_test" 
