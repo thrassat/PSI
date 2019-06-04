@@ -23,8 +23,9 @@ int get_addr (char *elm){ // addr de la var ou -1 si non  présente
 	
 	int trouve = 0 ;
 	int i = 0 ; 
-	int res = -1 ; //si non trouvé
-	while (trouve==0 && i<TAILLE) {  // Voir eventuellement pour allé que jusqua index si bien toujours le prochaine case dispo ds ts 
+	int res = -5 ; //si non trouvé
+	while (trouve==0 && i<index_ts) {  // Voir eventuellement pour allé que jusqua index si bien toujours le prochaine case dispo ds ts 
+		printf("[Get_addr]Comparaison de tVAR %s et l'elm %s\n",elm,ts[i].name) ; 
 		if (strcmp(ts[i].name,elm) == 0) {  // elles sont egales 
 			res = ts[i].addr ; 		        // addr trouvé
 			trouve=1 ; 
@@ -40,7 +41,8 @@ int get_addr (char *elm){ // addr de la var ou -1 si non  présente
 	//Get address from index
 int get_addr_fi(int i){
 
-	int res = -1 ;
+	printf ( " INDEX tvar %s d'index  %d %d \n\n" , ts[i].name, i,index_ts ) ; 
+	int res = -9 ;
 	if (i < index_ts){
 		res = ts[i].addr ;
 	}
@@ -54,7 +56,7 @@ int get_index (char *elm){ // index de la var ou -1 si non  présente
 	
 	int trouve = 0 ;
 	int i = 0 ; 
-	int res = -1 ; //si non trouvé
+	int res = -8 ; //si non trouvé
 	while (trouve==0 && i<index_ts) {  
 		if (strcmp(ts[i].name,elm) == 0) {  // elles sont egales 
 			res = i ; 		        // addr trouvé
@@ -72,14 +74,14 @@ int get_index (char *elm){ // index de la var ou -1 si non  présente
 	//Insérer 1 elm dans le tab
 int insert (char *nom, int cons, int init2){
 
-	int res = -1 ;
+	int res = -7 ;
 
 	//Show ts before
 	printf("[Function : Insert, show the ts before] \n") ;	
 	show_ts() ;
  
 	//Elm non existant donc on peut l'insérer
-	if (get_addr(nom) == -1){
+	if (get_addr(nom) == -5){
 
 
 		strcpy(ts[index_ts].type,t) ;
@@ -217,7 +219,7 @@ int remove_tmp (){ //elm <==> le nom de l'elm
 	show_ts() ;
 
 
-	int res = -1 ;
+	int res = -6 ;
 	char *type ;
 	index_ts = index_ts - 1 ;	//On se place sur le dernier elm
 

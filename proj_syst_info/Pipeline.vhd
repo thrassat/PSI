@@ -30,13 +30,13 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity Pipeline is
-	 generic (N:natural := 16) ; 
-    Port ( OPi : in  STD_LOGIC_VECTOR (7 downto 0);
+	 generic (N:natural := 16; nop:natural := 8) ; 
+    Port ( OPi : in  STD_LOGIC_VECTOR (nop-1 downto 0);
            Ai : in  STD_LOGIC_VECTOR (N-1 downto 0);
            Bi : in  STD_LOGIC_VECTOR (N-1 downto 0);
            Ci : in  STD_LOGIC_VECTOR (N-1 downto 0);
            CLK : in  STD_LOGIC;
-           OPo : out  STD_LOGIC_VECTOR (7 downto 0);
+           OPo : out  STD_LOGIC_VECTOR (nop-1 downto 0);
            Ao : out  STD_LOGIC_VECTOR (N-1 downto 0);
            Bo : out  STD_LOGIC_VECTOR (N-1 downto 0);
            Co : out  STD_LOGIC_VECTOR (N-1 downto 0));

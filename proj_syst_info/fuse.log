@@ -1,22 +1,41 @@
-Running: /usr/local/insa/Xilinx.ISE/13.4/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -lib secureip -o /home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/decode_test_isim_beh.exe -prj /home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/decode_test_beh.prj work.decode_test 
+Running: /usr/local/insa/Xilinx.ISE/13.4/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -lib secureip -o /home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/tb_final3_isim_beh.exe -prj /home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/tb_final3_beh.prj work.tb_final3 
 ISim O.87xd (signature 0x8ddf5b5d)
 Number of CPUs detected in this system: 4
 Turning on mult-threading, number of parallel sub-compilation jobs: 8 
 Determining compilation order of HDL files
+Parsing VHDL file "/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/Pipeline.vhd" into library work
+Parsing VHDL file "/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/mux.vhd" into library work
+Parsing VHDL file "/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/IP.vhd" into library work
+Parsing VHDL file "/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/Instr_Memory.vhd" into library work
 Parsing VHDL file "/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/decode.vhd" into library work
-Parsing VHDL file "/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/decode_test.vhd" into library work
+Parsing VHDL file "/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/Data_Memory.vhd" into library work
+Parsing VHDL file "/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/BR.vhd" into library work
+Parsing VHDL file "/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/ALU.vhd" into library work
+Parsing VHDL file "/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/MicroProc.vhd" into library work
+Parsing VHDL file "/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/tb_final3.vhd" into library work
 Starting static elaboration
 Completed static elaboration
-Fuse Memory Usage: 94616 KB
-Fuse CPU Usage: 900 ms
+Fuse Memory Usage: 97784 KB
+Fuse CPU Usage: 1190 ms
 Compiling package standard
 Compiling package std_logic_1164
+Compiling package std_logic_arith
+Compiling package std_logic_unsigned
+Compiling package numeric_std
+Compiling architecture behavioral of entity IP [ip_default]
+Compiling architecture behavioral of entity Instr_Memory [instr_memory_default]
 Compiling architecture behavioral of entity decode [decode_default]
-Compiling architecture behavior of entity decode_test
+Compiling architecture behavioral of entity Pipeline [\Pipeline(16,8)\]
+Compiling architecture behavioral of entity BR [br_default]
+Compiling architecture behavioral of entity mux [\mux(16)\]
+Compiling architecture behavioral of entity ALU [alu_default]
+Compiling architecture behavioral of entity Data_Memory [data_memory_default]
+Compiling architecture behavioral of entity MicroProc [\MicroProc(8)\]
+Compiling architecture behavior of entity tb_final3
 Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
-Compiled 5 VHDL Units
-Built simulation executable /home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/decode_test_isim_beh.exe
-Fuse Memory Usage: 660336 KB
-Fuse CPU Usage: 910 ms
-GCC CPU Usage: 170 ms
+Compiled 24 VHDL Units
+Built simulation executable /home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/tb_final3_isim_beh.exe
+Fuse Memory Usage: 673984 KB
+Fuse CPU Usage: 1440 ms
+GCC CPU Usage: 180 ms

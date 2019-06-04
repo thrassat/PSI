@@ -39,13 +39,12 @@ ARCHITECTURE behavior OF mux_test IS
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT mux
-    PORT(
-         i0 : IN  std_logic_vector(7 downto 0);
-         i1 : IN  std_logic_vector(7 downto 0);
-         sel : IN  std_logic;
-         S : OUT  std_logic_vector(7 downto 0)
-        );
+    COMPONENT mux 
+	 generic (N:natural := 16) ; 
+    Port ( i0 : in  STD_LOGIC_VECTOR (N-1 downto 0);
+           i1 : in  STD_LOGIC_VECTOR (N-1 downto 0);
+           sel : in  STD_LOGIC ; 
+           S : out  STD_LOGIC_VECTOR (N-1 downto 0));
     END COMPONENT;
     
 
@@ -64,7 +63,7 @@ ARCHITECTURE behavior OF mux_test IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: mux PORT MAP (
+   uut: mux generic map (N => 8) PORT MAP (
           i0 => i0,
           i1 => i1,
           sel => sel,

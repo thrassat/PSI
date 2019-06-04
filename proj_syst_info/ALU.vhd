@@ -54,8 +54,8 @@ begin
 	
 		-- Faire un bloc pour le choix du signal intermediaire 
 	S <= Sadd (15 downto 0) when OP = x"1" else 
-		  Sless (15 downto 0) when OP = x"2" else
-		  Smul (15 downto 0) when OP = x"3" else
+		  Sless (15 downto 0) when OP = x"3" else
+		  Smul (15 downto 0) when OP = x"2" else
 		  x"0000" ; 
 		  
 		  --Carry (juste pour addition)
@@ -64,15 +64,15 @@ begin
 			
 			--Negatif (+/- le bit le plus a gauche, signé ou non signé, le programmeur utilisera ensuite l'information) 
 	N <= Sadd(15) when OP = x"1" else    
-		  Sless(15) when OP = x"2" else 
+		  Sless(15) when OP = x"3" else 
 		  '0' ;
 		  
 		  -- Overflow (sur add , sous, et mul : change le bit de signe alors que ne devrait pas )  
 	O <= '1' when (OP=x"1" AND A(15)='0' AND B(15)='0' AND Sadd(15)='1') -- positif + positif = negatif 
 				  OR (OP=x"1" AND A(15)='1' AND B(15)='1' AND Sadd(15)='0') -- negatif + negatif = positif 
-				  OR (OP=x"2" AND A(15)='0' AND B(15)='1' AND Sless(15)='1') --positif - negatif = negatif 
-				  OR (OP=x"2" AND A(15)='1' AND B(15)='0' AND Sless(15)='0') 	-- negatif - positif = positif 
-				  OR (OP=x"3" AND Smul(31 downto 16) /= x"0000")					-- res mul sur + de 16 bits 
+				  OR (OP=x"3" AND A(15)='0' AND B(15)='1' AND Sless(15)='1') --positif - negatif = negatif 
+				  OR (OP=x"3" AND A(15)='1' AND B(15)='0' AND Sless(15)='0') 	-- negatif - positif = positif 
+				  OR (OP=x"2" AND Smul(31 downto 16) /= x"0000")					-- res mul sur + de 16 bits 
 				  else   '0' ;
 				  
 		  
@@ -88,7 +88,7 @@ begin
 	Sless <= A - B ;
 	
 	-- Multiplication ( 2 signaux de 16 bits sort 32 bits !!! attnetion) 
-	Smul <= std_logic_vector(unsigned(A) * unsigned(B)) when OP=x"3" ;  -- faire en non signé et cast a la fin std logic 
+	Smul <= std_logic_vector(unsigned(A) * unsigned(B)) when OP=x"2" ;  -- faire en non signé et cast a la fin std logic 
 	
 end Behavioral;
 

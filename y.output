@@ -59,10 +59,10 @@ Grammaire
    24 Var: tVAR tAFFECT Exp
    25    | tVAR
 
-   26 Exp: Exp tPLUS Exp
-   27    | Exp tLESS Exp
-   28    | Exp tMUL Exp
-   29    | Exp tDIV Exp
+   26 Exp: Exp tMUL Exp
+   27    | Exp tDIV Exp
+   28    | Exp tPLUS Exp
+   29    | Exp tLESS Exp
    30    | Value
    31    | tPARO Exp tPARF
 
@@ -100,8 +100,8 @@ error (256)
 tIF (258) 35 37
 tELSE (259) 37
 tWHILE (260) 40
-tPLUS (261) 26
-tLESS (262) 27
+tPLUS (261) 28
+tLESS (262) 29
 tAFFECT (263) 18 24
 tEQUIV (264) 42
 tDIFF (265) 43
@@ -109,8 +109,8 @@ tSUP (266) 44
 tINF (267) 45
 tSUPEQ (268) 46
 tINFEQ (269) 47
-tMUL (270) 28
-tDIV (271) 29
+tMUL (270) 26
+tDIV (271) 27
 tPARO (272) 4 31 35 37 40
 tPARF (273) 4 31 35 37 40
 tACCO (274) 12
@@ -631,10 +631,10 @@ OpComparaison (57)
 
 État 44
 
-   26 Exp: Exp . tPLUS Exp
-   27    | Exp . tLESS Exp
-   28    | Exp . tMUL Exp
-   29    | Exp . tDIV Exp
+   26 Exp: Exp . tMUL Exp
+   27    | Exp . tDIV Exp
+   28    | Exp . tPLUS Exp
+   29    | Exp . tLESS Exp
    41 Comparaison: Exp . OpComparaison Exp
 
     tPLUS   décalage et aller à l'état 54
@@ -682,10 +682,10 @@ OpComparaison (57)
 État 48
 
    18 Afect: tVAR tAFFECT Exp . tPV
-   26 Exp: Exp . tPLUS Exp
-   27    | Exp . tLESS Exp
-   28    | Exp . tMUL Exp
-   29    | Exp . tDIV Exp
+   26 Exp: Exp . tMUL Exp
+   27    | Exp . tDIV Exp
+   28    | Exp . tPLUS Exp
+   29    | Exp . tLESS Exp
 
     tPLUS  décalage et aller à l'état 54
     tLESS  décalage et aller à l'état 55
@@ -732,10 +732,10 @@ OpComparaison (57)
 
 État 53
 
-   26 Exp: Exp . tPLUS Exp
-   27    | Exp . tLESS Exp
-   28    | Exp . tMUL Exp
-   29    | Exp . tDIV Exp
+   26 Exp: Exp . tMUL Exp
+   27    | Exp . tDIV Exp
+   28    | Exp . tPLUS Exp
+   29    | Exp . tLESS Exp
    31    | tPARO Exp . tPARF
 
     tPLUS  décalage et aller à l'état 54
@@ -747,7 +747,7 @@ OpComparaison (57)
 
 État 54
 
-   26 Exp: Exp tPLUS . Exp
+   28 Exp: Exp tPLUS . Exp
 
     tPARO  décalage et aller à l'état 41
     tVAR   décalage et aller à l'état 42
@@ -759,7 +759,7 @@ OpComparaison (57)
 
 État 55
 
-   27 Exp: Exp tLESS . Exp
+   29 Exp: Exp tLESS . Exp
 
     tPARO  décalage et aller à l'état 41
     tVAR   décalage et aller à l'état 42
@@ -813,7 +813,7 @@ OpComparaison (57)
 
 État 62
 
-   28 Exp: Exp tMUL . Exp
+   26 Exp: Exp tMUL . Exp
 
     tPARO  décalage et aller à l'état 41
     tVAR   décalage et aller à l'état 42
@@ -825,7 +825,7 @@ OpComparaison (57)
 
 État 63
 
-   29 Exp: Exp tDIV . Exp
+   27 Exp: Exp tDIV . Exp
 
     tPARO  décalage et aller à l'état 41
     tVAR   décalage et aller à l'état 42
@@ -874,10 +874,10 @@ OpComparaison (57)
 État 68
 
    24 Var: tVAR tAFFECT Exp .
-   26 Exp: Exp . tPLUS Exp
-   27    | Exp . tLESS Exp
-   28    | Exp . tMUL Exp
-   29    | Exp . tDIV Exp
+   26 Exp: Exp . tMUL Exp
+   27    | Exp . tDIV Exp
+   28    | Exp . tPLUS Exp
+   29    | Exp . tLESS Exp
 
     tPLUS  décalage et aller à l'état 54
     tLESS  décalage et aller à l'état 55
@@ -908,60 +908,60 @@ OpComparaison (57)
 
 État 71
 
-   26 Exp: Exp . tPLUS Exp
-   26    | Exp tPLUS Exp .
-   27    | Exp . tLESS Exp
-   28    | Exp . tMUL Exp
-   29    | Exp . tDIV Exp
+   26 Exp: Exp . tMUL Exp
+   27    | Exp . tDIV Exp
+   28    | Exp . tPLUS Exp
+   28    | Exp tPLUS Exp .
+   29    | Exp . tLESS Exp
 
     tMUL  décalage et aller à l'état 62
     tDIV  décalage et aller à l'état 63
-
-    $défaut  réduction par utilisation de la règle 26 (Exp)
-
-
-État 72
-
-   26 Exp: Exp . tPLUS Exp
-   27    | Exp . tLESS Exp
-   27    | Exp tLESS Exp .
-   28    | Exp . tMUL Exp
-   29    | Exp . tDIV Exp
-
-    tMUL  décalage et aller à l'état 62
-    tDIV  décalage et aller à l'état 63
-
-    $défaut  réduction par utilisation de la règle 27 (Exp)
-
-
-État 73
-
-   26 Exp: Exp . tPLUS Exp
-   27    | Exp . tLESS Exp
-   28    | Exp . tMUL Exp
-   28    | Exp tMUL Exp .
-   29    | Exp . tDIV Exp
 
     $défaut  réduction par utilisation de la règle 28 (Exp)
 
 
-État 74
+État 72
 
-   26 Exp: Exp . tPLUS Exp
-   27    | Exp . tLESS Exp
-   28    | Exp . tMUL Exp
-   29    | Exp . tDIV Exp
-   29    | Exp tDIV Exp .
+   26 Exp: Exp . tMUL Exp
+   27    | Exp . tDIV Exp
+   28    | Exp . tPLUS Exp
+   29    | Exp . tLESS Exp
+   29    | Exp tLESS Exp .
+
+    tMUL  décalage et aller à l'état 62
+    tDIV  décalage et aller à l'état 63
 
     $défaut  réduction par utilisation de la règle 29 (Exp)
 
 
+État 73
+
+   26 Exp: Exp . tMUL Exp
+   26    | Exp tMUL Exp .
+   27    | Exp . tDIV Exp
+   28    | Exp . tPLUS Exp
+   29    | Exp . tLESS Exp
+
+    $défaut  réduction par utilisation de la règle 26 (Exp)
+
+
+État 74
+
+   26 Exp: Exp . tMUL Exp
+   27    | Exp . tDIV Exp
+   27    | Exp tDIV Exp .
+   28    | Exp . tPLUS Exp
+   29    | Exp . tLESS Exp
+
+    $défaut  réduction par utilisation de la règle 27 (Exp)
+
+
 État 75
 
-   26 Exp: Exp . tPLUS Exp
-   27    | Exp . tLESS Exp
-   28    | Exp . tMUL Exp
-   29    | Exp . tDIV Exp
+   26 Exp: Exp . tMUL Exp
+   27    | Exp . tDIV Exp
+   28    | Exp . tPLUS Exp
+   29    | Exp . tLESS Exp
    41 Comparaison: Exp OpComparaison Exp .
 
     tPLUS  décalage et aller à l'état 54

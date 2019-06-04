@@ -499,9 +499,9 @@ static const yytype_uint8 yyrline[] =
 {
        0,    39,    39,    41,    42,    44,    46,    47,    48,    50,
       51,    52,    54,    54,    58,    59,    60,    61,    62,    66,
-      76,    78,    79,    81,    82,    85,    87,    90,   101,   111,
-     120,   129,   130,   132,   139,   149,   154,   161,   158,   173,
-     175,   172,   184,   186,   187,   188,   189,   190,   191
+      77,    79,    80,    82,    83,    86,    88,    91,   102,   115,
+     126,   136,   137,   139,   146,   156,   162,   169,   166,   181,
+     183,   180,   192,   194,   195,   196,   197,   198,   199
 };
 #endif
 
@@ -570,7 +570,7 @@ static const yytype_uint8 yydefact[] =
       17,     0,    33,    34,     0,    31,     0,     0,     0,     0,
       20,     0,    21,     0,     0,     0,    43,    44,    45,    46,
       47,    48,     0,     0,     0,    35,     0,    19,    25,    24,
-      32,    27,    28,    29,    30,    42,     0,    40,    23,    36,
+      32,    29,    30,    27,    28,    42,     0,    40,    23,    36,
        0,    37,    41,     0,    38
 };
 
@@ -1357,163 +1357,157 @@ yyreduce:
 #line 1358 "y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 19:
-#line 66 "compilateurc.y" /* yacc.c:1646  */
-    { int ivar = get_addr((yyvsp[-3].c)) ; 
-							  
-							  insert2("LOAD",0,(yyvsp[-1].i)) ; 		//printf("LOAD 0, %d\n",$3) ;
-							  insert2("STORE",ivar,0) ; 	//printf("STORE %d, 0\n", ivar) ;
-							  remove_tmp () ; //pop, remove exp ;
-							
- }
-#line 1370 "y.tab.c" /* yacc.c:1646  */
-    break;
-
   case 25:
-#line 85 "compilateurc.y" /* yacc.c:1646  */
+#line 86 "compilateurc.y" /* yacc.c:1646  */
     {remove_tmp() ; 
 						insert((yyvsp[-2].c),0,1); }
-#line 1377 "y.tab.c" /* yacc.c:1646  */
+#line 1365 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 87 "compilateurc.y" /* yacc.c:1646  */
+#line 88 "compilateurc.y" /* yacc.c:1646  */
     {insert((yyvsp[0].c),0,0); }
-#line 1383 "y.tab.c" /* yacc.c:1646  */
+#line 1371 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 90 "compilateurc.y" /* yacc.c:1646  */
-    { int ad1 = get_addr_fi((yyvsp[-2].i)); // c'est effectivement from index car Value est un index  (de son tmp)
-					int ad2 = get_addr_fi((yyvsp[0].i)) ; 
-					insert2("LOAD",0,ad1) ; //printf("LOAD 0, %d\n",ad1) ; 
-					insert2("LOAD",1,ad2) ; //printf("LOAD 1, %d\n",ad2) ;
-					insert3("ADD",0,0,1) ; // printf("ADD 0,0,1") ;
-					remove_tmp () ; //pop, remove add2
-					insert2("STORE",0,ad1) ; //printf("STORE %d, 0\n", ad1) ;
-					(yyval.i)= ad1 ;
-						 }
-#line 1397 "y.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 28:
-#line 101 "compilateurc.y" /* yacc.c:1646  */
-    { int ad1 = get_addr_fi((yyvsp[-2].i)); 
-					int ad2 = get_addr_fi((yyvsp[0].i)) ; 
-					insert2("LOAD",0,ad1) ; //printf("LOAD 0, %d\n",ad1) ; 
-					insert2("LOAD",1,ad2) ; //printf("LOAD 1, %d\n",ad2) ;
-					insert3("SOU",0,0,1) ; // printf("SOU 0,0,1") ;
-					remove_tmp () ; //pop, remove add2
-					insert2("STORE",0,ad1) ; //printf("STORE %d, 0\n", ad1) ;
-					(yyval.i)= ad1 ; }
-#line 1410 "y.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 29:
-#line 111 "compilateurc.y" /* yacc.c:1646  */
+#line 91 "compilateurc.y" /* yacc.c:1646  */
     { int ad1 = get_addr_fi((yyvsp[-2].i)); 
 					int ad2 = get_addr_fi((yyvsp[0].i)) ; 
 					insert2("LOAD",0,ad1) ; //printf("LOAD 0, %d\n",ad1) ; 
 					insert2("LOAD",1,ad2) ; //printf("LOAD 1, %d\n",ad2) ;
 					insert3("MUL",0,0,1) ; // printf("MUL 0,0,1") ;
 					remove_tmp () ; //pop, remove add2
-					insert2("STORE",0,ad1) ; //printf("STORE %d, 0\n", ad1) ;
-					(yyval.i)= ad1 ; }
-#line 1423 "y.tab.c" /* yacc.c:1646  */
+					insert2("STORE",ad1,0) ; //printf("STORE %d, 0\n", ad1) ;
+					(yyval.i)= ad1 ;
+					//remove_tmp () ;
+					 }
+#line 1386 "y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 30:
-#line 120 "compilateurc.y" /* yacc.c:1646  */
+  case 28:
+#line 102 "compilateurc.y" /* yacc.c:1646  */
     { int ad1 = get_addr_fi((yyvsp[-2].i)); 
 					int ad2 = get_addr_fi((yyvsp[0].i)) ; 
 					insert2("LOAD",0,ad1) ; //printf("LOAD 0, %d\n",ad1) ; 
 					insert2("LOAD",1,ad2) ; //printf("LOAD 1, %d\n",ad2) ;
 					insert3("DIV",0,0,1) ; // printf("DIV 0,0,1") ;
 					remove_tmp () ; //pop, remove add2
-					insert2("STORE",0,ad1) ; //printf("STORE %d, 0\n", ad1) ;
-					(yyval.i)= ad1 ; }
-#line 1436 "y.tab.c" /* yacc.c:1646  */
+					insert2("STORE",ad1,0) ; //printf("STORE %d, 0\n", ad1) ;
+					(yyval.i)= ad1 ;
+					//remove_tmp () ; 
+					}
+#line 1401 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 29:
+#line 115 "compilateurc.y" /* yacc.c:1646  */
+    { int ad1 = get_addr_fi((yyvsp[-2].i)); // c'est effectivement from index car Value est un index  (de son tmp)
+					int ad2 = get_addr_fi((yyvsp[0].i)) ; 
+					insert2("LOAD",0,ad1) ; //printf("LOAD 0, %d\n",ad1) ; 
+					insert2("LOAD",1,ad2) ; //printf("LOAD 1, %d\n",ad2) ;
+					insert3("ADD",0,0,1) ; // printf("ADD 0,0,1") ;
+					remove_tmp () ; //pop, remove add2
+					insert2("STORE",ad1,0) ; //printf("STORE %d, 0\n", ad1) ;
+					(yyval.i)= ad1 ; //remove_tmp () ;
+						 }
+#line 1415 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 30:
+#line 126 "compilateurc.y" /* yacc.c:1646  */
+    { int ad1 = get_addr_fi((yyvsp[-2].i)); 
+					int ad2 = get_addr_fi((yyvsp[0].i)) ; 
+					insert2("LOAD",0,ad1) ; //printf("LOAD 0, %d\n",ad1) ; 
+					insert2("LOAD",1,ad2) ; //printf("LOAD 1, %d\n",ad2) ;
+					insert3("SOU",0,0,1) ; // printf("SOU 0,0,1") ;
+					remove_tmp () ; //pop, remove add2
+					insert2("STORE",ad1,0) ; //printf("STORE %d, 0\n", ad1) ;
+					(yyval.i)= ad1 ;//remove_tmp () ;
+					 }
+#line 1429 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 130 "compilateurc.y" /* yacc.c:1646  */
+#line 137 "compilateurc.y" /* yacc.c:1646  */
     { (yyval.i) = (yyvsp[-1].i); }
-#line 1442 "y.tab.c" /* yacc.c:1646  */
+#line 1435 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 132 "compilateurc.y" /* yacc.c:1646  */
+#line 139 "compilateurc.y" /* yacc.c:1646  */
     {printf("id %s\n",(yyvsp[0].c));
 				int addr = get_addr((yyvsp[0].c)) ; 
 				int tmp = insert_tmp() ; 
 				insert2("LOAD",0,addr) ; //printf("LOAD 0, %d\n", addr) ; 
-				insert2("STORE", 0,get_addr_fi(tmp) ) ; //printf("STORE %d, 0\n", get_addr_fi(tmp)) ; 
-				(yyval.i)=tmp ;  }
-#line 1453 "y.tab.c" /* yacc.c:1646  */
+				insert2("STORE",get_addr_fi(tmp),0 ) ; //printf("STORE %d, 0\n", get_addr_fi(tmp)) ; 
+				(yyval.i)=tmp-1 ;  }
+#line 1446 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 34:
-#line 139 "compilateurc.y" /* yacc.c:1646  */
+#line 146 "compilateurc.y" /* yacc.c:1646  */
     {printf("id %d\n",(yyvsp[0].i));
 				int tmp = insert_tmp () ; 
 				insert2("AFC",0,(yyvsp[0].i)) ; // printf("AFC 0, %d\n", $1) ; 
-				insert2("STORE",0,get_addr_fi(tmp) ) ; //printf("STORE %d, 0\n", get_addr_fi(tmp)) ; 
+				insert2("STORE",get_addr_fi(tmp),0 ) ; //printf("STORE %d, 0\n", get_addr_fi(tmp)) ; 
 				(yyval.i)=tmp ; }
-#line 1463 "y.tab.c" /* yacc.c:1646  */
+#line 1456 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 149 "compilateurc.y" /* yacc.c:1646  */
+#line 156 "compilateurc.y" /* yacc.c:1646  */
     { remove_tmp() ; 
+		 // -1 est temporaire
 		insert2("LOAD",1,get_last_addr());
-		insert2("JMPC",-1,1) ; // -1 est temporaire
-	    (yyval.i) = get_last_ti() - 1 ; }
-#line 1472 "y.tab.c" /* yacc.c:1646  */
+		insert2("JMPC",-1,1) ;
+	    (yyval.i) = get_last_ti()  ; }
+#line 1466 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 36:
-#line 156 "compilateurc.y" /* yacc.c:1646  */
+#line 164 "compilateurc.y" /* yacc.c:1646  */
     {set_ti((yyvsp[-1].i),"a",get_last_ti()); }
-#line 1478 "y.tab.c" /* yacc.c:1646  */
+#line 1472 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 37:
-#line 161 "compilateurc.y" /* yacc.c:1646  */
+#line 169 "compilateurc.y" /* yacc.c:1646  */
     {insert2("JMPC",-1,1) ;  // saut a -1 si registre 1 à 0
 				set_ti((yyvsp[-2].i),"a",get_last_ti());   //Patch le If (le -1)
-				(yyvsp[0].i) = get_last_ti() - 1 ;}
-#line 1486 "y.tab.c" /* yacc.c:1646  */
+				(yyvsp[0].i) = get_last_ti() ;}
+#line 1480 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 165 "compilateurc.y" /* yacc.c:1646  */
+#line 173 "compilateurc.y" /* yacc.c:1646  */
     {set_ti((yyvsp[-2].i),"a",get_last_ti());}
-#line 1492 "y.tab.c" /* yacc.c:1646  */
+#line 1486 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 39:
-#line 173 "compilateurc.y" /* yacc.c:1646  */
+#line 181 "compilateurc.y" /* yacc.c:1646  */
     {(yyvsp[0].i)=get_last_ti(); }
-#line 1498 "y.tab.c" /* yacc.c:1646  */
+#line 1492 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 40:
-#line 175 "compilateurc.y" /* yacc.c:1646  */
+#line 183 "compilateurc.y" /* yacc.c:1646  */
     { insert2("LOAD",1,get_last_addr());
 								  insert2("JMPF",1,0xFFFF); // jmp false si la 2eme valeur est diff de zéro( faux) , on jump a l'addresse de 1 qui a été load juste avant (patch avec le $3 de set_ti 
-								  (yyvsp[-2].i)=get_last_ti() -1 ;}
-#line 1506 "y.tab.c" /* yacc.c:1646  */
+								  (yyvsp[-2].i)=get_last_ti()  ;}
+#line 1500 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 41:
-#line 179 "compilateurc.y" /* yacc.c:1646  */
+#line 187 "compilateurc.y" /* yacc.c:1646  */
     {insert2("JMP",(yyvsp[-6].i),1);
-				 set_ti((yyvsp[-4].i),"a",get_last_ti()); }
-#line 1513 "y.tab.c" /* yacc.c:1646  */
+				 set_ti((yyvsp[-4].i),"b",get_last_ti()); }
+#line 1507 "y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1517 "y.tab.c" /* yacc.c:1646  */
+#line 1511 "y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1741,7 +1735,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 198 "compilateurc.y" /* yacc.c:1906  */
+#line 206 "compilateurc.y" /* yacc.c:1906  */
  
 
 int main (void) { 

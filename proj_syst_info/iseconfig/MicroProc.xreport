@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2019-05-14T08:10:09</DateModified>
+  <DateModified>2019-05-29T12:38:02</DateModified>
   <ModuleName>MicroProc</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
   <SavedFilePath>/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/iseconfig/MicroProc.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info</ImplementationReportsDirectory>
+  <ImplementationReportsDirectory>/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/</ImplementationReportsDirectory>
   <DateInitialized>2019-05-14T08:10:08</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

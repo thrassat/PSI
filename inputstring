@@ -4,15 +4,15 @@ int main () {
 int z = 12 ; 
 int z34__ = 32 ; 
 int a,b,c = 256 ; 
-int d,e ; 
-int q = 85 ; 
+int d,e,f ; 
 f = 12 ;
+int q = 85 ; 
+
 int g ; 
-int h ; 
-int i ; 
+
 int cpt = 1 ; 
 
-int k = 56 * 8 + c / g ; 
+int k = 56 * 8 + c  ; 
 
 if (k>586){
 

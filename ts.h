@@ -24,7 +24,7 @@ symbol ts [TAILLE] ; //Tab symbole
 
 void show_ts () ; 
 
-int get_addr (char *elm) ;      //Get address from name, -1 si n'existe pas 
+int get_addr (char *elm) ;      //Get address from name, -5 si n'existe pas 
 
 int get_addr_fi (int i) ;   	//Get address from index , implémenter comme si existe. 
 

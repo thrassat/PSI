@@ -61,15 +61,15 @@ int set_ti(int ligne, char *param, int maj){
 
 	if (param="a"){
 		ti[ligne].a=maj ;
-		printf(" %d , %d ",ti[ligne].a,maj) ; 
+		printf("[SET_TI] %d , %d ",ti[ligne].a,maj) ; 
 	}
 	else if (param="b"){
 		ti[ligne].a=maj ;
-		printf(" %d , %d ",ti[ligne].b,maj) ; 
+		printf("[SET_TI]  %d , %d ",ti[ligne].b,maj) ; 
 	}
 	else if (param="c"){
 		ti[ligne].c=maj ;
-		printf(" %d , %d ",ti[ligne].c,maj) ; 
+		printf("[SET_TI] %d , %d ",ti[ligne].c,maj) ; 
 	}
 	else{
 		printf("Error set_ti, case =/= -1") ;
@@ -81,7 +81,8 @@ int set_ti(int ligne, char *param, int maj){
 
 //Fonction pour recopier le tableau ds un fichier
 void export_tab(){
-	FILE *f = fopen("compilated.txt","w") ; 
+		printf("EXPORT FILE!\n");
+	FILE *f = fopen("compilated2.txt","w") ; 
 	
 	if (f == NULL)
 	{
@@ -90,15 +91,27 @@ void export_tab(){
 	}
 	else { 
 		for (int j=0; j<index_ti; j++){	
-			fprintf(f,"%s ",ti[j].op) ; 
 
+			if (j==0) fprintf(f,"%s ",ti[j].op) ; else fprintf(f,"\n%s ",ti[j].op)  ;
+			
 			// 2 cas : si a contient une adresse ou un registre 
 			// Si une adresse 
-			if ((strcmp(ti[j].op,"JMPC")==0) || (strcmp(ti[j].op,"JMPF")==0) || (strcmp(ti[j].op,"STORE")==0)) { 
+			if ((strcmp(ti[j].op,"JMPC")==0) || (strcmp(ti[j].op,"JMP")==0) || (strcmp(ti[j].op,"JMPF")==0) || (strcmp(ti[j].op,"STORE")==0)) { 
+				/*	Conversion hexa non fonctionnelle : 
 				char Res[4] ; 
-				memcpy(Res,&ti[j].a,4) ; 							
-				fprintf(f,"0x%s ",Res) ; 
+				memcpy(Res,&ti[j].b,4) ; 							
+				fprintf(f,"0x%s ",Res) ; */
+
+				char nameReg[3] ;
+				char res[3] = "@" ; 
+				sprintf(nameReg,"%d",ti[j].a) ; 
+				fprintf(f,"%s ",strcat(res,nameReg)) ; 
+
+				//fprintf(f,"%d ",ti[j].a) ; 	OK sans @
+
 			} 
+			
+
 			else { 
 				char nameReg[3] ;
 				char res[3] = "R" ; 
@@ -110,12 +123,53 @@ void export_tab(){
 	// Pour la prochaine fois ::: Ok la concatenation de R0 , R1 classique , verif tout les cas
 		// La concatenation pour l'hexadecimal!!!!! (1ere cond du if) 
 		// traiter parametre b et c 
-			fprintf(f,"%d ",ti[j].b) ; 
-			fprintf(f,"%d\n",ti[j].c) ; 
+
+			//Condition sur B
+		if (strcmp(ti[j].op,"JMP")!=0){	//Il y une 2e opérande
+			if (strcmp(ti[j].op,"LOAD")==0){	//C'est une adresse
+			/*	Conversion hexa non fonctionnelle : 
+				char Res[4] ; 
+				memcpy(Res,&ti[j].b,4) ; 							
+				fprintf(f,"0x%s ",Res) ; */
+
+				//fprintf(f,"%d ",ti[j].b) ; OK sans @
+
+				char nameReg[3] ;
+				char res[3] = "@" ; 
+				sprintf(nameReg,"%d",ti[j].b) ; 
+				fprintf(f,"%s ",strcat(res,nameReg)) ; 
+
+			}
+			else if ((strcmp(ti[j].op,"AFC")==0) || (strcmp(ti[j].op,"JMPF")==0) )  {
+				fprintf(f,"%d ",ti[j].b) ;
+			 } 
+			else{
+				char nameReg[3] ;
+				char res[3] = "R" ; 
+				sprintf(nameReg,"%d",ti[j].b) ; 
+				fprintf(f,"%s ",strcat(res,nameReg)) ; 
+			}
+			//fprintf(f,"%d\n",ti[j].b) ;
 		}
-	}
+		
+
+
+			//Condition sur C
+		if ((strcmp(ti[j].op,"AFC")!=0) && (strcmp(ti[j].op,"LOAD")!=0) && (strcmp(ti[j].op,"COP")!=0) && (strcmp(ti[j].op,"STORE")!=0) && (strcmp(ti[j].op,"JMPC")!=0) && (strcmp(ti[j].op,"JMPF")!=0) && (strcmp(ti[j].op,"JMP")!=0)){
+			char nameReg[3] ;
+				char res[3] = "R" ; 
+				sprintf(nameReg,"%d",ti[j].c) ; 
+				fprintf(f,"%s ",strcat(res,nameReg)) ; 
+		}
+		
+
+
+}
+
 	fclose(f) ; 
 
+
+}
 }
 
 
