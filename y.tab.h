@@ -116,7 +116,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 12 "compilateurc.y" /* yacc.c:1909  */
+#line 10 "compilateurc.y" /* yacc.c:1909  */
 
 	int i ;
 	char* c ;

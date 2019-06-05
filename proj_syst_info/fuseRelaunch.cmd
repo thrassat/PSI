@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -lib "secureip" -o "/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/tb_final3_isim_beh.exe" -prj "/home/rassat/Bureau/4A/s2/projetsystinfo/proj_syst_info/tb_final3_beh.prj" "work.tb_final3" 

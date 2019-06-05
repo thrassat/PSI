@@ -5,7 +5,6 @@
 #include<string.h>
 #include<stdlib.h>
 
-
 #define TAILLE 1024
 
 
@@ -48,7 +47,6 @@ void inc_prof() ; //prof ++
 void set_int () ;	
 void set_void () ;
 void set_string () ;
-
 
 
 #endif

@@ -4,7 +4,11 @@ int main () {
 	int b = 2 ; 
 	int a = 3 ; 
 	int c,d = 0 ; 
-
+	
+	printf (b) ;
+	printf (a) ; 
+	printf (c) ; 
+	printf (d) ; 
 
 } 
 

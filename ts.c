@@ -150,7 +150,7 @@ int insert_tmp (){
 	//Test si bon type ??
 
 
-	//Enlever 1 elm du tab avec son nom , rajout test de type et bouger addr_m ?  
+	//Enlever 1 elm du tab avec son nom ,
 int remove_elm (char *elm){ //elm <==> le nom de l'elm
 
 
@@ -177,7 +177,7 @@ int remove_elm (char *elm){ //elm <==> le nom de l'elm
 }
 
 
-int get_last_addr () {  // A voir si jamais on doit bouger addr_m
+int get_last_addr () {  
 	
 	int ad ;
 	char *type ;  
@@ -326,21 +326,18 @@ void clean_prof () {
 }
 
 void set_int (){
-	t= "int" ; //bon recopiage ?
+	t= "int" ; 
 }
 void set_void (){
-	t= "void" ; //bon recopiage ?
+	t= "void" ; 
 }
 void set_string (){
-	t= "string" ; //bon recopiage ?
+	t= "string" ; 
 }
 
 void inc_prof(){
 	prof ++ ;
 }
-
-
-
 
 /*int main (){ //Test 
 
@@ -353,6 +350,5 @@ void inc_prof(){
 	insert_tmp(1) ;
 	remove_tmp() ;
 
-	
 }*/
 
