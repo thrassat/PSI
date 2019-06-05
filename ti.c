@@ -82,7 +82,7 @@ int set_ti(int ligne, char *param, int maj){
 //Fonction pour recopier le tableau ds un fichier
 void export_tab(){
 		printf("EXPORT FILE!\n");
-	FILE *f = fopen("compilated2.txt","w") ; 
+	FILE *f = fopen("compilated.s","w") ; 
 	
 	if (f == NULL)
 	{
@@ -96,19 +96,17 @@ void export_tab(){
 			
 			// 2 cas : si a contient une adresse ou un registre 
 			// Si une adresse 
-			if ((strcmp(ti[j].op,"JMPC")==0) || (strcmp(ti[j].op,"JMP")==0) || (strcmp(ti[j].op,"JMPF")==0) || (strcmp(ti[j].op,"STORE")==0)) { 
+
+			if ((strcmp(ti[j].op,"JMPC")==0) || (strcmp(ti[j].op,"JMP")==0) || (strcmp(ti[j].op,"JMPF")==0) || (strcmp(ti[j].op,"STORE")==0) || (strcmp(ti[j].op,"PRINT")==0)  ) { 
 				/*	Conversion hexa non fonctionnelle : 
 				char Res[4] ; 
 				memcpy(Res,&ti[j].b,4) ; 							
 				fprintf(f,"0x%s ",Res) ; */
-
 				char nameReg[3] ;
 				char res[3] = "@" ; 
 				sprintf(nameReg,"%d",ti[j].a) ; 
 				fprintf(f,"%s ",strcat(res,nameReg)) ; 
-
 				//fprintf(f,"%d ",ti[j].a) ; 	OK sans @
-
 			} 
 			
 
@@ -116,16 +114,10 @@ void export_tab(){
 				char nameReg[3] ;
 				char res[3] = "R" ; 
 				sprintf(nameReg,"%d",ti[j].a) ; 
-				fprintf(f,"%s ",strcat(res,nameReg)) ; 
-				
+				fprintf(f,"%s ",strcat(res,nameReg)) ; 		
 			} 
-
-	// Pour la prochaine fois ::: Ok la concatenation de R0 , R1 classique , verif tout les cas
-		// La concatenation pour l'hexadecimal!!!!! (1ere cond du if) 
-		// traiter parametre b et c 
-
 			//Condition sur B
-		if (strcmp(ti[j].op,"JMP")!=0){	//Il y une 2e opérande
+		if ((strcmp(ti[j].op,"JMP")!=0) && (strcmp(ti[j].op,"PRINT")!=0)) {	//Il y une 2e opérande
 			if (strcmp(ti[j].op,"LOAD")==0){	//C'est une adresse
 			/*	Conversion hexa non fonctionnelle : 
 				char Res[4] ; 
@@ -151,11 +143,9 @@ void export_tab(){
 			}
 			//fprintf(f,"%d\n",ti[j].b) ;
 		}
-		
-
 
 			//Condition sur C
-		if ((strcmp(ti[j].op,"AFC")!=0) && (strcmp(ti[j].op,"LOAD")!=0) && (strcmp(ti[j].op,"COP")!=0) && (strcmp(ti[j].op,"STORE")!=0) && (strcmp(ti[j].op,"JMPC")!=0) && (strcmp(ti[j].op,"JMPF")!=0) && (strcmp(ti[j].op,"JMP")!=0)){
+		if ((strcmp(ti[j].op,"AFC")!=0) && (strcmp(ti[j].op,"LOAD")!=0) && (strcmp(ti[j].op,"COP")!=0) && (strcmp(ti[j].op,"STORE")!=0) && (strcmp(ti[j].op,"JMPC")!=0) && (strcmp(ti[j].op,"JMPF")!=0) && (strcmp(ti[j].op,"JMP")!=0) &&(strcmp(ti[j].op,"PRINT")!=0) ){
 			char nameReg[3] ;
 				char res[3] = "R" ; 
 				sprintf(nameReg,"%d",ti[j].c) ; 
